@@ -1,0 +1,35 @@
+<h1>Edit Product</h1>
+<form [formGroup]="updateForm" (ngSubmit)="onSubmit()">
+  <mat-form-field appearance="fill">
+    <mat-label>Name</mat-label>
+    <input matInput formControlName="name" />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Category</mat-label>
+    <mat-select formControlName="category">
+      <mat-option value="eyes">Eyes</mat-option>
+      <mat-option value="face">Face</mat-option>
+      <mat-option value="lips">Lips</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Description</mat-label>
+    <textarea matInput formControlName="description"></textarea>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Amount</mat-label>
+    <input matInput type="number" formControlName="price" />
+    <span matPrefix>$&nbsp;</span>
+  </mat-form-field>
+  <div>
+    <label for="picture">Choose a picture:</label>
+    <input
+      type="file"
+      id="picture"
+      name="picture"
+      accept="image/png, image/jpeg"
+      (change)="onFileChanged($event)"
+    />
+  </div>
+  <button mat-raised-button color="primary" type="submit">Update</button>
+</form>

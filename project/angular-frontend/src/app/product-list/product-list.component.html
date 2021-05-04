@@ -1,0 +1,31 @@
+<h1> <span>Our</span> Products</h1>
+<div class="products">
+  <div *ngFor="let product of products | async">
+    <mat-card class="card">
+      <mat-card-header>
+        <mat-card-title>{{ product.name }}</mat-card-title>
+        <mat-card-subtitle>{{ product.price | currency }}</mat-card-subtitle>
+        <span class="category">
+          {{ product.category }}
+        </span>
+      </mat-card-header>
+      <img mat-card-image src="{{ 'assets/' + product.image || placeholder }}" alt="Product Placeholder" />
+
+      <mat-card-content>
+        <p>{{ product.description }}</p>
+      </mat-card-content>
+      <mat-card-actions class="actions">
+        <a [routerLink]="['/products', product.id]">
+          <button mat-icon-button>
+            <mat-icon>edit</mat-icon>
+            Edit
+          </button>
+        </a>
+        <button mat-icon-button (click)="onDelete($event, product)">
+          <mat-icon>delete</mat-icon>
+          Delete
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
